@@ -2,7 +2,6 @@
 Project to retrieve data from an API using VUE.js
 
 ## Table of Contents
----
 * [General Information](#general-information)
 * [Installation](#installation)
 * [Technologies](#technologies)
@@ -16,7 +15,7 @@ This project contains a single page app that retrieves data using jsonplaceholde
 ### Technologies
 ---
 The projected is using:
-* Vue.js 2.x
+* Vue.js 2
 * CoreUI 2.1.16
 * HTML
 * CSS
