@@ -22,10 +22,11 @@ The projected is using:
 
 ### Installation
 ---
-**Requirements**<br/>
+**Requirements**<br/>  
 Any modern webbrowser will do
 
-Download the root folder and open the index.html file inside the html folder.
+Download the project folder. Open the index.html file inside the html folder.  
+No installation required.
 
 **Known Issues**
 * The app does not handle errors that may occur if the API does not provide any data
