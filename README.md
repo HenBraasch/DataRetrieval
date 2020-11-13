@@ -22,7 +22,7 @@ The projected is using:
 
 ### Installation
 ---
-**Requirements**
+**Requirements**<br/>
 Any modern webbrowser will do
 
 Download the root folder and open the index.html file inside the html folder.
