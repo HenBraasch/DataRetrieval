@@ -1,0 +1,122 @@
+<!--
+Author: Hendrik Braasch
+File: index.html
+Description: The mainpage of the app
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <title>Retrieving data from an API</title>
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
+    <style>
+        [v-cloak] {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <h1>Retrieve data from an API</h1>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">How to use this app.</h3>
+                    <p>
+                        When loaded, this app retrieves a list of users.<br>
+                        Clicking the name of the user displays 10 posts written by that user.<br>
+                        Clicking the title of the post displays the details of the post.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="main">
+        <div id="app">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">{{tableHeading}}</h2>
+                            <!--The user table-->
+                            <table class="table table-hover table-sm">
+                                <caption>List of users</caption>
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="user in users">
+                                        <td scope="row">{{user.id}}</td>
+                                        <td scope="row" @click="getMessages(user.id)">{{user.name}}</td>
+                                        <td scope="row">{{user.email}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card" v-if="isMessageReady">
+                        <div class="card-body">
+                            <h2 class="card-title">Messages by {{selectedUser}}</h2>
+                            <!--The messages table-->
+                            <table v-cloak class="table table-hover table-sm">
+                                <caption>List of messages by the selected user</caption>
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Title</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="message in messages">
+                                        <td scope="row">{{message.id}}</td>
+                                        <td scope="row" @click="getMessageDetail(message.id)">{{message.title}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+            <!--The message detail table-->
+            <div v-if="isMessageSelected">
+                <div class="row">
+                    <div class="container">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h2 class="card-title">Message Detail</h2>
+                                <table v-cloak class="table table-hover table-sm">
+                                    <caption>Message Details</caption>
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">{{details.id}}</td>
+                                            <td scope="row">{{details.body}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </main>
+    <script src="https://unpkg.com/browse/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+</html>
